@@ -1,0 +1,46 @@
+{
+  "name": "eccocss",
+  "version": "0.1.0",
+  "description": "Minimal classless CSS. Link one stylesheet and your semantic HTML looks polished by default.",
+  "license": "MIT",
+  "author": "Alseus Robert Palanca",
+  "homepage": "https://github.com/arpalanca/eccocss#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arpalanca/eccocss.git"
+  },
+  "bugs": {
+    "url": "https://github.com/arpalanca/eccocss/issues"
+  },
+  "keywords": [
+    "css",
+    "classless",
+    "minimal",
+    "stylesheet",
+    "semantic",
+    "html"
+  ],
+  "main": "dist/ecco.min.css",
+  "style": "dist/ecco.min.css",
+  "unpkg": "dist/ecco.min.css",
+  "jsdelivr": "dist/ecco.min.css",
+  "exports": {
+    ".": "./dist/ecco.min.css",
+    "./css": "./dist/ecco.css",
+    "./min": "./dist/ecco.min.css",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "css/",
+    "dist/",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "lightningcss-cli": "^1.30.1"
+  }
+}

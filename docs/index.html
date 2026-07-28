@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="description"
+      content="Ecco CSS: minimal classless CSS. Include Ecco. Write HTML. Done."
+    />
+    <title>Ecco CSS</title>
+    <link rel="stylesheet" href="./ecco.min.css" />
+  </head>
+  <body>
+    <header>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#quick-start">Quick start</a></li>
+          <li><a href="#typography">Typography</a></li>
+          <li><a href="#forms">Forms</a></li>
+          <li><a href="#tables">Tables</a></li>
+          <li><a href="#misc">Misc</a></li>
+          <li>
+            <a href="https://github.com/arpalanca/eccocss">GitHub</a>
+          </li>
+        </ul>
+      </nav>
+      <h1>Ecco CSS</h1>
+      <p>Include Ecco. Write HTML. Done.</p>
+    </header>
+
+    <main>
+      <section>
+        <h2>What is this?</h2>
+        <p>
+          Ecco is a single stylesheet that styles semantic HTML for you. Link
+          it once. No classes required for a clean, readable page.
+        </p>
+        <ul>
+          <li>Classless by default</li>
+          <li>Light &amp; dark via <code>prefers-color-scheme</code></li>
+          <li>Themeable with CSS variables</li>
+          <li>No JavaScript</li>
+        </ul>
+      </section>
+
+      <hr />
+
+      <section id="quick-start">
+        <h2>Quick start</h2>
+
+        <h3>Download the file</h3>
+        <p>
+          Prefer to host the CSS yourself? Grab a file and drop it into your
+          project:
+        </p>
+        <ul>
+          <li>
+            <a
+              href="https://github.com/arpalanca/eccocss/raw/main/dist/ecco.min.css"
+              download
+              >ecco.min.css</a
+            >
+            (minified, recommended)
+          </li>
+          <li>
+            <a
+              href="https://github.com/arpalanca/eccocss/raw/main/dist/ecco.css"
+              download
+              >ecco.css</a
+            >
+            (readable source)
+          </li>
+          <li>
+            <a
+              href="https://github.com/arpalanca/eccocss/archive/refs/heads/main.zip"
+              >Download ZIP</a
+            >
+            (full repository)
+          </li>
+        </ul>
+        <p>Then link it locally:</p>
+        <pre><code>&lt;link rel="stylesheet" href="css/ecco.min.css" /&gt;</code></pre>
+        <p>
+          You can also copy
+          <code>dist/ecco.min.css</code> from a local clone of this repo.
+        </p>
+
+        <h3>Use the CDN</h3>
+        <p>No download needed. Link Ecco from jsDelivr:</p>
+        <pre><code>&lt;link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/arpalanca/eccocss@main/dist/ecco.min.css"
+/&gt;</code></pre>
+        <p>
+          For production, pin a tag or commit (replace
+          <code>@main</code> with <code>@v0.1.0</code> or a SHA).
+        </p>
+
+        <h3>Install with npm</h3>
+        <pre><code>npm install github:arpalanca/eccocss</code></pre>
+        <pre><code>&lt;link rel="stylesheet" href="node_modules/eccocss/dist/ecco.min.css" /&gt;</code></pre>
+
+        <h3>Starter HTML</h3>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt;
+    &lt;meta name="color-scheme" content="light dark" /&gt;
+    &lt;title&gt;Hello Ecco&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/ecco.min.css" /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;main&gt;
+      &lt;h1&gt;Hello&lt;/h1&gt;
+      &lt;p&gt;Semantic HTML, styled automatically.&lt;/p&gt;
+      &lt;button&gt;Get started&lt;/button&gt;
+    &lt;/main&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </section>
+
+      <hr />
+
+      <section id="typography">
+        <h2>Typography</h2>
+        <h3>Heading three</h3>
+        <h4>Heading four</h4>
+        <h5>Heading five</h5>
+        <h6>Heading six</h6>
+        <p>
+          Body text with <strong>strong</strong>, <em>emphasis</em>,
+          <mark>highlight</mark>, <a href="#">a link</a>,
+          <code>inline code</code>, <sub>sub</sub>, and <sup>sup</sup>. Press
+          <kbd>Ctrl</kbd> + <kbd>C</kbd>.
+        </p>
+        <p>
+          <small>Small print for captions and asides.</small>
+        </p>
+        <blockquote>
+          <p>
+            Semantic HTML should look good before you reach for a class.
+          </p>
+          <footer>Ecco philosophy</footer>
+        </blockquote>
+        <ul>
+          <li>Unordered one</li>
+          <li>
+            Unordered two
+            <ul>
+              <li>Nested item</li>
+              <li>Another nested item</li>
+            </ul>
+          </li>
+          <li>Unordered three</li>
+        </ul>
+        <ol>
+          <li>Ordered one</li>
+          <li>Ordered two</li>
+          <li>Ordered three</li>
+        </ol>
+        <dl>
+          <dt>Classless</dt>
+          <dd>Elements are styled by tag, not by utility classes.</dd>
+          <dt>Themeable</dt>
+          <dd>Override CSS variables to match your brand.</dd>
+        </dl>
+        <pre><code>function hello(name) {
+  return `Hello, ${name}!`;
+}</code></pre>
+      </section>
+
+      <hr />
+
+      <section id="forms">
+        <h2>Forms</h2>
+        <form>
+          <fieldset>
+            <legend>Profile</legend>
+            <label for="name">Name</label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              placeholder="Ada Lovelace"
+              autocomplete="name"
+            />
+
+            <label for="email">Email</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="ada@example.com"
+              autocomplete="email"
+            />
+
+            <label for="password">Password</label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              placeholder="••••••••"
+              autocomplete="new-password"
+            />
+
+            <label for="role">Role</label>
+            <select id="role" name="role">
+              <optgroup label="Creative">
+                <option>Designer</option>
+                <option>Writer</option>
+              </optgroup>
+              <optgroup label="Technical">
+                <option>Engineer</option>
+                <option>Researcher</option>
+              </optgroup>
+            </select>
+
+            <label for="about">About</label>
+            <textarea
+              id="about"
+              name="about"
+              placeholder="A short bio…"
+            ></textarea>
+
+            <label>
+              <input type="checkbox" name="newsletter" checked />
+              Subscribe to updates
+            </label>
+
+            <label>
+              <input type="radio" name="plan" value="free" checked />
+              Free
+            </label>
+            <label>
+              <input type="radio" name="plan" value="pro" />
+              Pro
+            </label>
+
+            <label for="volume">Volume</label>
+            <input
+              id="volume"
+              name="volume"
+              type="range"
+              min="0"
+              max="100"
+              value="60"
+            />
+
+            <button type="submit">Save</button>
+            <button type="reset">Reset</button>
+            <a href="#" role="button">Link button</a>
+          </fieldset>
+        </form>
+      </section>
+
+      <hr />
+
+      <section id="tables">
+        <h2>Tables</h2>
+        <table>
+          <caption>
+            Sample data
+          </caption>
+          <thead>
+            <tr>
+              <th>Package</th>
+              <th>Size</th>
+              <th>License</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>ecco.min.css</td>
+              <td>minified</td>
+              <td>MIT</td>
+            </tr>
+            <tr>
+              <td>ecco.css</td>
+              <td>source</td>
+              <td>MIT</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <hr />
+
+      <section id="misc">
+        <h2>Misc</h2>
+        <details>
+          <summary>How do I theme Ecco?</summary>
+          <p>
+            Override variables on <code>:root</code>. For example,
+            <code>--ecco-primary</code>, <code>--ecco-bg</code>, and
+            <code>--ecco-width</code>. See the
+            <a href="https://github.com/arpalanca/eccocss#customization"
+              >README customization section</a
+            >.
+          </p>
+        </details>
+
+        <label for="progress">Progress</label>
+        <progress id="progress" max="100" value="64">64%</progress>
+
+        <figure>
+          <pre><code>:root {
+  --ecco-hue: 160;
+  --ecco-width: 52rem;
+}</code></pre>
+          <figcaption>Example theme overrides</figcaption>
+        </figure>
+
+        <p>
+          Light and dark follow <code>prefers-color-scheme</code> automatically.
+          Switch your OS theme to preview.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        Ecco CSS · MIT ·
+        <a href="https://github.com/arpalanca/eccocss">GitHub</a>
+        ·
+        <a href="#quick-start">Download</a>
+      </p>
+    </footer>
+  </body>
+</html>

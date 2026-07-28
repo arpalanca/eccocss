@@ -1,0 +1,824 @@
+/*!
+ * Ecco CSS v0.1.0
+ * Minimal classless CSS. Include Ecco. Write HTML. Done.
+ * MIT License · https://github.com/arpalanca/eccocss
+ */
+
+/* -------------------------------------------------------------------------- */
+/* Tokens                                                                      */
+/* -------------------------------------------------------------------------- */
+
+:root {
+  color-scheme: light dark;
+
+  /* Typography */
+  --ecco-font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu,
+    Cantarell, "Noto Sans", sans-serif;
+  --ecco-font-family-mono: ui-monospace, "Cascadia Code", "Source Code Pro",
+    Menlo, Consolas, "DejaVu Sans Mono", monospace;
+  --ecco-font-size: 100%;
+  --ecco-line-height: 1.65;
+  --ecco-line-height-heading: 1.2;
+
+  /* Layout */
+  --ecco-width: 46rem;
+  --ecco-spacing: 1rem;
+  --ecco-border-radius: 0.375rem;
+  --ecco-border-width: 1px;
+  --ecco-transition: 0.15s ease;
+
+  /* Type scale */
+  --ecco-font-size-h1: 2.25rem;
+  --ecco-font-size-h2: 1.75rem;
+  --ecco-font-size-h3: 1.375rem;
+  --ecco-font-size-h4: 1.125rem;
+  --ecco-font-size-h5: 1rem;
+  --ecco-font-size-h6: 0.875rem;
+  --ecco-font-size-small: 0.875rem;
+
+  /* Light theme */
+  --ecco-hue: 198;
+  --ecco-bg: hsl(210 20% 98%);
+  --ecco-bg-subtle: hsl(210 16% 94%);
+  --ecco-surface: hsl(0 0% 100%);
+  --ecco-text: hsl(210 24% 16%);
+  --ecco-muted: hsl(210 10% 42%);
+  --ecco-border: hsl(210 14% 84%);
+  --ecco-primary: hsl(var(--ecco-hue) 72% 38%);
+  --ecco-primary-hover: hsl(var(--ecco-hue) 72% 32%);
+  --ecco-primary-text: hsl(0 0% 100%);
+  --ecco-accent: hsl(var(--ecco-hue) 55% 92%);
+  --ecco-code-bg: hsl(210 18% 93%);
+  --ecco-mark: hsl(48 96% 76%);
+  --ecco-ins: hsl(145 45% 90%);
+  --ecco-del: hsl(0 55% 92%);
+  --ecco-shadow: 0 1px 2px hsl(210 24% 16% / 0.06);
+  --ecco-focus: 0 0 0 0.2rem hsl(var(--ecco-hue) 72% 38% / 0.3);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ecco-bg: hsl(210 18% 10%);
+    --ecco-bg-subtle: hsl(210 16% 14%);
+    --ecco-surface: hsl(210 16% 13%);
+    --ecco-text: hsl(210 20% 94%);
+    --ecco-muted: hsl(210 10% 68%);
+    --ecco-border: hsl(210 12% 24%);
+    --ecco-primary: hsl(var(--ecco-hue) 70% 58%);
+    --ecco-primary-hover: hsl(var(--ecco-hue) 70% 66%);
+    --ecco-primary-text: hsl(210 24% 10%);
+    --ecco-accent: hsl(var(--ecco-hue) 30% 18%);
+    --ecco-code-bg: hsl(210 16% 16%);
+    --ecco-mark: hsl(48 60% 28%);
+    --ecco-ins: hsl(145 30% 18%);
+    --ecco-del: hsl(0 35% 20%);
+    --ecco-shadow: 0 1px 2px hsl(0 0% 0% / 0.35);
+    --ecco-focus: 0 0 0 0.2rem hsl(var(--ecco-hue) 70% 58% / 0.35);
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Base                                                                        */
+/* -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: var(--ecco-font-size);
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--ecco-font-family);
+  font-size: 1rem;
+  line-height: var(--ecco-line-height);
+  color: var(--ecco-text);
+  background-color: var(--ecco-bg);
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background-color: var(--ecco-accent);
+  color: var(--ecco-text);
+}
+
+body > header,
+body > main,
+body > footer,
+body > article,
+body > section,
+body > aside,
+body > nav,
+body > form {
+  width: min(100% - 2 * var(--ecco-spacing), var(--ecco-width));
+  margin-inline: auto;
+}
+
+body > header,
+body > footer {
+  padding-block: calc(var(--ecco-spacing) * 1.5);
+}
+
+body > main {
+  padding-block: calc(var(--ecco-spacing) * 2);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Typography                                                                  */
+/* -------------------------------------------------------------------------- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-block: 1.5em 0.5em;
+  font-weight: 700;
+  line-height: var(--ecco-line-height-heading);
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  color: var(--ecco-text);
+}
+
+h1:first-child,
+h2:first-child,
+h3:first-child,
+h4:first-child,
+h5:first-child,
+h6:first-child,
+p:first-child {
+  margin-top: 0;
+}
+
+h1 {
+  font-size: var(--ecco-font-size-h1);
+}
+
+h2 {
+  font-size: var(--ecco-font-size-h2);
+}
+
+h3 {
+  font-size: var(--ecco-font-size-h3);
+}
+
+h4 {
+  font-size: var(--ecco-font-size-h4);
+}
+
+h5 {
+  font-size: var(--ecco-font-size-h5);
+}
+
+h6 {
+  font-size: var(--ecco-font-size-h6);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ecco-muted);
+}
+
+p {
+  margin-block: 0 var(--ecco-spacing);
+}
+
+small,
+figcaption {
+  font-size: var(--ecco-font-size-small);
+  color: var(--ecco-muted);
+}
+
+sub,
+sup {
+  font-size: 0.75em;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.4em;
+}
+
+strong,
+b {
+  font-weight: 700;
+}
+
+em,
+i {
+  font-style: italic;
+}
+
+mark {
+  padding: 0.1em 0.25em;
+  background-color: var(--ecco-mark);
+  color: inherit;
+  border-radius: 0.15rem;
+}
+
+ins {
+  background-color: var(--ecco-ins);
+  text-decoration: none;
+}
+
+del {
+  background-color: var(--ecco-del);
+  text-decoration: line-through;
+}
+
+abbr[title] {
+  cursor: help;
+  text-decoration: underline dotted;
+  text-underline-offset: 0.15em;
+}
+
+address {
+  font-style: normal;
+  line-height: var(--ecco-line-height);
+}
+
+hr {
+  height: 0;
+  margin-block: calc(var(--ecco-spacing) * 2);
+  border: 0;
+  border-top: var(--ecco-border-width) solid var(--ecco-border);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Links                                                                       */
+/* -------------------------------------------------------------------------- */
+
+a {
+  color: var(--ecco-primary);
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+  transition: color var(--ecco-transition);
+}
+
+a:hover {
+  color: var(--ecco-primary-hover);
+}
+
+a:focus-visible {
+  outline: none;
+  box-shadow: var(--ecco-focus);
+  border-radius: 0.15rem;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Lists                                                                       */
+/* -------------------------------------------------------------------------- */
+
+ul,
+ol,
+dl {
+  margin-block: 0 var(--ecco-spacing);
+  padding-inline-start: 1.5rem;
+}
+
+li {
+  margin-block: 0.25em;
+}
+
+ul li::marker,
+ol li::marker {
+  color: var(--ecco-muted);
+}
+
+dt {
+  font-weight: 700;
+}
+
+dd {
+  margin-inline-start: var(--ecco-spacing);
+  margin-bottom: 0.5em;
+  color: var(--ecco-muted);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Blockquote                                                                  */
+/* -------------------------------------------------------------------------- */
+
+blockquote {
+  margin: 0 0 var(--ecco-spacing);
+  padding: var(--ecco-spacing) calc(var(--ecco-spacing) * 1.25);
+  border-inline-start: 0.25rem solid var(--ecco-primary);
+  background-color: var(--ecco-bg-subtle);
+  border-radius: 0 var(--ecco-border-radius) var(--ecco-border-radius) 0;
+  color: var(--ecco-muted);
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+blockquote footer,
+blockquote cite {
+  font-size: var(--ecco-font-size-small);
+  font-style: normal;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Code                                                                        */
+/* -------------------------------------------------------------------------- */
+
+code,
+kbd,
+samp,
+pre {
+  font-family: var(--ecco-font-family-mono);
+  font-size: 0.9em;
+}
+
+code,
+kbd,
+samp {
+  padding: 0.15em 0.4em;
+  background-color: var(--ecco-code-bg);
+  border-radius: calc(var(--ecco-border-radius) * 0.65);
+}
+
+kbd {
+  border: var(--ecco-border-width) solid var(--ecco-border);
+  box-shadow: inset 0 -0.1em 0 var(--ecco-border);
+}
+
+pre {
+  display: block;
+  overflow-x: auto;
+  margin: 0 0 var(--ecco-spacing);
+  padding: calc(var(--ecco-spacing) * 1.1);
+  background-color: var(--ecco-code-bg);
+  border: var(--ecco-border-width) solid var(--ecco-border);
+  border-radius: var(--ecco-border-radius);
+  line-height: 1.5;
+  tab-size: 2;
+}
+
+pre code {
+  padding: 0;
+  background: none;
+  border-radius: 0;
+  font-size: inherit;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Tables                                                                      */
+/* -------------------------------------------------------------------------- */
+
+table {
+  width: 100%;
+  margin-bottom: var(--ecco-spacing);
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 0.95em;
+  overflow-x: auto;
+  display: block;
+}
+
+@media (min-width: 40rem) {
+  table {
+    display: table;
+    overflow-x: visible;
+  }
+}
+
+caption {
+  margin-bottom: 0.5em;
+  caption-side: bottom;
+  text-align: start;
+  font-size: var(--ecco-font-size-small);
+  color: var(--ecco-muted);
+}
+
+th,
+td {
+  padding: 0.65em 0.85em;
+  border-bottom: var(--ecco-border-width) solid var(--ecco-border);
+  text-align: start;
+  vertical-align: top;
+}
+
+th {
+  font-weight: 650;
+  background-color: var(--ecco-bg-subtle);
+}
+
+tbody tr:hover {
+  background-color: var(--ecco-accent);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Media                                                                       */
+/* -------------------------------------------------------------------------- */
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+figure {
+  margin: 0 0 var(--ecco-spacing);
+}
+
+figcaption {
+  margin-top: 0.5em;
+}
+
+iframe {
+  max-width: 100%;
+  border: var(--ecco-border-width) solid var(--ecco-border);
+  border-radius: var(--ecco-border-radius);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Forms                                                                       */
+/* -------------------------------------------------------------------------- */
+
+form {
+  margin-bottom: var(--ecco-spacing);
+}
+
+fieldset {
+  margin: 0 0 var(--ecco-spacing);
+  padding: calc(var(--ecco-spacing) * 1.1);
+  border: var(--ecco-border-width) solid var(--ecco-border);
+  border-radius: var(--ecco-border-radius);
+  background-color: var(--ecco-surface);
+}
+
+legend {
+  padding-inline: 0.35em;
+  font-weight: 650;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.35em;
+  font-weight: 550;
+}
+
+label:has(+ :is(input, select, textarea)),
+label:has(+ * :is(input, select, textarea)) {
+  margin-top: 0.85em;
+}
+
+label:first-child {
+  margin-top: 0;
+}
+
+input,
+select,
+textarea,
+button {
+  font: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+}
+
+input:not([type="checkbox"], [type="radio"], [type="range"], [type="file"], [type="color"], [type="submit"], [type="button"], [type="reset"], [type="image"]),
+select,
+textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: var(--ecco-spacing);
+  padding: 0.55em 0.75em;
+  background-color: var(--ecco-surface);
+  border: var(--ecco-border-width) solid var(--ecco-border);
+  border-radius: var(--ecco-border-radius);
+  box-shadow: var(--ecco-shadow);
+  transition:
+    border-color var(--ecco-transition),
+    box-shadow var(--ecco-transition);
+}
+
+input:not([type="checkbox"], [type="radio"], [type="range"], [type="file"], [type="color"], [type="submit"], [type="button"], [type="reset"], [type="image"]):focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--ecco-primary);
+  box-shadow: var(--ecco-focus);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--ecco-muted);
+  opacity: 0.8;
+}
+
+input:user-invalid,
+select:user-invalid,
+textarea:user-invalid {
+  border-color: hsl(0 65% 45%);
+}
+
+input:user-invalid:focus,
+select:user-invalid:focus,
+textarea:user-invalid:focus {
+  box-shadow: 0 0 0 0.2rem hsl(0 65% 45% / 0.25);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-text-fill-color: var(--ecco-text);
+  box-shadow: 0 0 0 1000px var(--ecco-surface) inset;
+  transition: background-color 99999s ease-out;
+}
+
+textarea {
+  min-height: 7rem;
+  resize: vertical;
+}
+
+select {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--ecco-muted) 50%),
+    linear-gradient(135deg, var(--ecco-muted) 50%, transparent 50%);
+  background-position:
+    calc(100% - 1.15em) calc(50% - 0.15em),
+    calc(100% - 0.75em) calc(50% - 0.15em);
+  background-size: 0.4em 0.4em, 0.4em 0.4em;
+  background-repeat: no-repeat;
+  padding-inline-end: 2.25em;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  width: 1.1em;
+  height: 1.1em;
+  margin: 0 0.5em 0 0;
+  accent-color: var(--ecco-primary);
+  vertical-align: middle;
+}
+
+input[type="range"] {
+  display: block;
+  width: 100%;
+  margin-bottom: var(--ecco-spacing);
+  accent-color: var(--ecco-primary);
+}
+
+input[type="file"] {
+  display: block;
+  width: 100%;
+  margin-bottom: var(--ecco-spacing);
+  padding: 0.45em 0;
+}
+
+input[type="color"] {
+  width: 3rem;
+  height: 2.25rem;
+  padding: 0.15em;
+  margin-bottom: var(--ecco-spacing);
+  border: var(--ecco-border-width) solid var(--ecco-border);
+  border-radius: var(--ecco-border-radius);
+  background: var(--ecco-surface);
+}
+
+label:has(input[type="checkbox"]),
+label:has(input[type="radio"]) {
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  margin-bottom: 0.5em;
+}
+
+:disabled,
+[aria-disabled="true"] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Buttons                                                                     */
+/* -------------------------------------------------------------------------- */
+
+button,
+input[type="submit"],
+input[type="button"],
+input[type="reset"],
+a[role="button"] {
+  display: inline-block;
+  margin: 0 0.35em 0.75em 0;
+  padding: 0.55em 1.1em;
+  font-weight: 600;
+  line-height: 1.25;
+  text-align: center;
+  text-decoration: none;
+  color: var(--ecco-primary-text);
+  background-color: var(--ecco-primary);
+  border: var(--ecco-border-width) solid var(--ecco-primary);
+  border-radius: var(--ecco-border-radius);
+  box-shadow: var(--ecco-shadow);
+  cursor: pointer;
+  transition:
+    background-color var(--ecco-transition),
+    border-color var(--ecco-transition),
+    color var(--ecco-transition),
+    box-shadow var(--ecco-transition);
+}
+
+button:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover,
+a[role="button"]:hover {
+  background-color: var(--ecco-primary-hover);
+  border-color: var(--ecco-primary-hover);
+  color: var(--ecco-primary-text);
+}
+
+button:focus-visible,
+input[type="submit"]:focus-visible,
+input[type="button"]:focus-visible,
+input[type="reset"]:focus-visible,
+a[role="button"]:focus-visible {
+  outline: none;
+  box-shadow: var(--ecco-focus);
+}
+
+button:active,
+input[type="submit"]:active,
+input[type="button"]:active,
+input[type="reset"]:active,
+a[role="button"]:active {
+  transform: translateY(1px);
+}
+
+input[type="reset"],
+button[type="reset"] {
+  color: var(--ecco-text);
+  background-color: transparent;
+  border-color: var(--ecco-border);
+}
+
+input[type="reset"]:hover,
+button[type="reset"]:hover {
+  background-color: var(--ecco-bg-subtle);
+  border-color: var(--ecco-muted);
+  color: var(--ecco-text);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Interactive / misc                                                          */
+/* -------------------------------------------------------------------------- */
+
+details {
+  margin-bottom: var(--ecco-spacing);
+  padding: 0.75em 1em;
+  background-color: var(--ecco-surface);
+  border: var(--ecco-border-width) solid var(--ecco-border);
+  border-radius: var(--ecco-border-radius);
+}
+
+summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+summary:focus-visible {
+  outline: none;
+  box-shadow: var(--ecco-focus);
+  border-radius: 0.15rem;
+}
+
+details[open] > summary {
+  margin-bottom: 0.75em;
+}
+
+progress,
+meter {
+  display: block;
+  width: 100%;
+  height: 0.75rem;
+  margin-bottom: var(--ecco-spacing);
+  border: 0;
+  border-radius: 999px;
+  overflow: hidden;
+  background-color: var(--ecco-bg-subtle);
+  accent-color: var(--ecco-primary);
+}
+
+dialog {
+  width: min(100% - 2 * var(--ecco-spacing), 28rem);
+  padding: calc(var(--ecco-spacing) * 1.25);
+  color: var(--ecco-text);
+  background-color: var(--ecco-surface);
+  border: var(--ecco-border-width) solid var(--ecco-border);
+  border-radius: calc(var(--ecco-border-radius) * 1.25);
+  box-shadow: 0 1rem 2.5rem hsl(210 24% 10% / 0.2);
+}
+
+dialog::backdrop {
+  background-color: hsl(210 18% 10% / 0.45);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Sections / landmarks                                                        */
+/* -------------------------------------------------------------------------- */
+
+header,
+footer,
+article,
+section,
+aside,
+nav {
+  margin-bottom: var(--ecco-spacing);
+}
+
+header h1,
+header h2 {
+  margin-bottom: 0.25em;
+}
+
+footer {
+  color: var(--ecco-muted);
+  font-size: var(--ecco-font-size-small);
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav a {
+  text-decoration: none;
+  font-weight: 550;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Responsive                                                                  */
+/* -------------------------------------------------------------------------- */
+
+@media (max-width: 40rem) {
+  :root {
+    --ecco-font-size-h1: 1.85rem;
+    --ecco-font-size-h2: 1.5rem;
+    --ecco-font-size-h3: 1.25rem;
+  }
+
+  body > header,
+  body > main,
+  body > footer,
+  body > article,
+  body > section,
+  body > aside,
+  body > nav,
+  body > form {
+    width: min(100% - 1.5 * var(--ecco-spacing), var(--ecco-width));
+  }
+
+  button,
+  input[type="submit"],
+  input[type="button"],
+  input[type="reset"],
+  a[role="button"] {
+    display: block;
+    width: 100%;
+    margin-inline: 0;
+  }
+}
