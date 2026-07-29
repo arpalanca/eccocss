@@ -151,6 +151,124 @@ body > .docs-content > footer {
   margin-block: 2rem;
 }
 
+.docs-tip {
+  margin: 0 0 1.25rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--ecco-border);
+  border-inline-start: 0.25rem solid var(--ecco-primary);
+  border-radius: var(--ecco-border-radius);
+  background: var(--ecco-bg-subtle);
+  color: var(--ecco-muted);
+  font-size: 0.95rem;
+}
+
+.docs-tip strong {
+  color: var(--ecco-text);
+}
+
+/* Copyable sample code panels */
+.docs-code {
+  margin: 0 0 var(--ecco-spacing);
+  border: 1px solid var(--ecco-border);
+  border-radius: calc(var(--ecco-border-radius) * 1.15);
+  background: var(--ecco-code-bg);
+  box-shadow: var(--ecco-shadow);
+  overflow: hidden;
+}
+
+.docs-code-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.45rem 0.65rem 0.45rem 0.85rem;
+  border-bottom: 1px solid var(--ecco-border);
+  background: var(--ecco-surface);
+}
+
+.docs-code-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-width: 0;
+  color: var(--ecco-muted);
+  font-size: 0.78rem;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.docs-code-label::before {
+  content: "";
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 999px;
+  background: var(--ecco-primary);
+  flex: 0 0 auto;
+}
+
+.docs-code-copy {
+  margin: 0 !important;
+  padding: 0.3em 0.75em !important;
+  width: auto !important;
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8rem !important;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--ecco-text) !important;
+  background: var(--ecco-bg-subtle) !important;
+  border: 1px solid var(--ecco-border) !important;
+  border-radius: calc(var(--ecco-border-radius) * 0.85) !important;
+  box-shadow: none !important;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.docs-code-copy:hover {
+  background: var(--ecco-accent) !important;
+  border-color: var(--ecco-primary) !important;
+  color: var(--ecco-text) !important;
+}
+
+.docs-code-copy:focus-visible {
+  outline: none;
+  box-shadow: var(--ecco-focus) !important;
+}
+
+.docs-code-copy[data-copied="true"] {
+  color: var(--ecco-primary-text) !important;
+  background: var(--ecco-primary) !important;
+  border-color: var(--ecco-primary) !important;
+}
+
+.docs-code pre {
+  margin: 0;
+  padding: 1rem 1.05rem 1.15rem;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  overflow-x: auto;
+}
+
+.docs-code pre code {
+  font-size: 0.9rem;
+}
+
+.docs-content figure:has(.docs-code) {
+  margin: 0 0 var(--ecco-spacing);
+}
+
+.docs-content figure:has(.docs-code) .docs-code {
+  margin-bottom: 0.5rem;
+}
+
+.docs-content figure:has(.docs-code) figcaption {
+  margin: 0;
+  padding-inline: 0.15rem;
+}
+
 @media (max-width: 52rem) {
   body {
     grid-template-columns: 1fr;

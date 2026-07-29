@@ -67,6 +67,11 @@
 
         <section id="quick-start">
           <h2>Quick start</h2>
+          <p class="docs-tip">
+            <strong>Copy-ready samples.</strong> Each gray code panel below is a
+            snippet you can paste into your project. Use the
+            <strong>Copy</strong> button on the right of every panel.
+          </p>
 
           <h3>Download the file</h3>
           <p>
@@ -99,7 +104,7 @@
             </li>
           </ul>
           <p>Then link it locally:</p>
-          <pre><code>&lt;link rel="stylesheet" href="css/ecco.min.css" /&gt;</code></pre>
+          <pre data-lang="HTML" data-title="Local stylesheet"><code>&lt;link rel="stylesheet" href="css/ecco.min.css" /&gt;</code></pre>
           <p>
             You can also copy
             <code>dist/ecco.min.css</code> from a local clone of this repo.
@@ -107,7 +112,7 @@
 
           <h3>Use the CDN</h3>
           <p>No download needed. Link Ecco from jsDelivr:</p>
-          <pre><code>&lt;link
+          <pre data-lang="HTML" data-title="CDN link"><code>&lt;link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/gh/arpalanca/eccocss@main/dist/ecco.min.css"
 /&gt;</code></pre>
@@ -117,11 +122,12 @@
           </p>
 
           <h3>Install with npm</h3>
-          <pre><code>npm install github:arpalanca/eccocss</code></pre>
-          <pre><code>&lt;link rel="stylesheet" href="node_modules/eccocss/dist/ecco.min.css" /&gt;</code></pre>
+          <pre data-lang="Shell" data-title="Install"><code>npm install github:arpalanca/eccocss</code></pre>
+          <pre data-lang="HTML" data-title="Link from node_modules"><code>&lt;link rel="stylesheet" href="node_modules/eccocss/dist/ecco.min.css" /&gt;</code></pre>
 
           <h3>Starter HTML</h3>
-          <pre><code>&lt;!DOCTYPE html&gt;
+          <p>Full page starter. Copy, save as <code>index.html</code>, and open it:</p>
+          <pre data-lang="HTML" data-title="Starter page"><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
   &lt;head&gt;
     &lt;meta charset="utf-8" /&gt;
@@ -185,7 +191,7 @@
             <dt>Themeable</dt>
             <dd>Override CSS variables to match your brand.</dd>
           </dl>
-          <pre><code>function hello(name) {
+          <pre data-lang="JavaScript" data-title="Code sample"><code>function hello(name) {
   return `Hello, ${name}!`;
 }</code></pre>
         </section>
@@ -324,11 +330,11 @@
           <progress id="progress" max="100" value="64">64%</progress>
 
           <figure>
-            <pre><code>:root {
+            <pre data-lang="CSS" data-title="Theme overrides"><code>:root {
   --ecco-hue: 160;
   --ecco-width: 52rem;
 }</code></pre>
-            <figcaption>Example theme overrides</figcaption>
+            <figcaption>Paste into your own stylesheet after linking Ecco.</figcaption>
           </figure>
 
           <p>
@@ -350,6 +356,71 @@
 
     <script>
       (() => {
+        const guessLang = (text) => {
+          const t = text.trim();
+          if (/^<!DOCTYPE|^<html|^<link\b|^<[a-z]/i.test(t)) return "HTML";
+          if (/^(npm|yarn|pnpm|npx)\b/.test(t)) return "Shell";
+          if (/^:root\b|^--[a-z]|\{[\s\S]*\}/.test(t) && !/\bfunction\b/.test(t))
+            return "CSS";
+          if (/\bfunction\b|=>|const |let |var /.test(t)) return "JavaScript";
+          return "Code";
+        };
+
+        const enhanceCodeBlocks = () => {
+          document.querySelectorAll(".docs-content pre").forEach((pre) => {
+            if (pre.closest(".docs-code")) return;
+
+            const code = pre.querySelector("code") || pre;
+            const text = code.textContent.replace(/\n$/, "");
+            const lang = pre.dataset.lang || guessLang(text);
+            const title = pre.dataset.title || "Copyable sample";
+
+            const wrap = document.createElement("div");
+            wrap.className = "docs-code";
+            wrap.setAttribute("role", "group");
+            wrap.setAttribute("aria-label", `${title} code sample`);
+
+            const toolbar = document.createElement("div");
+            toolbar.className = "docs-code-toolbar";
+
+            const label = document.createElement("span");
+            label.className = "docs-code-label";
+            label.textContent = `${lang} · ${title}`;
+
+            const button = document.createElement("button");
+            button.type = "button";
+            button.className = "docs-code-copy";
+            button.setAttribute("aria-label", `Copy ${title}`);
+            button.textContent = "Copy";
+
+            button.addEventListener("click", async () => {
+              try {
+                await navigator.clipboard.writeText(text);
+              } catch {
+                const range = document.createRange();
+                range.selectNodeContents(code);
+                const selection = window.getSelection();
+                selection.removeAllRanges();
+                selection.addRange(range);
+                document.execCommand("copy");
+                selection.removeAllRanges();
+              }
+              button.textContent = "Copied";
+              button.dataset.copied = "true";
+              window.setTimeout(() => {
+                button.textContent = "Copy";
+                delete button.dataset.copied;
+              }, 1600);
+            });
+
+            toolbar.append(label, button);
+            pre.replaceWith(wrap);
+            wrap.append(toolbar, pre);
+          });
+        };
+
+        enhanceCodeBlocks();
+
         const links = [
           ...document.querySelectorAll('.docs-sidebar nav a[href^="#"]'),
         ];
