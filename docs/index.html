@@ -24,11 +24,14 @@
       <nav aria-label="Documentation">
         <ul>
           <li><a href="#top">Overview</a></li>
-          <li><a href="#quick-start">Quick start</a></li>
+          <li><a href="#install">Install</a></li>
+          <li><a href="#usage">Usage</a></li>
           <li><a href="#typography">Typography</a></li>
+          <li><a href="#buttons">Buttons</a></li>
           <li><a href="#forms">Forms</a></li>
           <li><a href="#tables">Tables</a></li>
-          <li><a href="#misc">Misc</a></li>
+          <li><a href="#components">Components</a></li>
+          <li><a href="#theming">Theming</a></li>
           <li>
             <a href="https://github.com/arpalanca/eccocss" rel="noopener"
               >GitHub</a
@@ -50,83 +53,88 @@
 
       <main>
         <section id="overview">
-          <h2>What is this?</h2>
-          <p>
-            Ecco is a single stylesheet that styles semantic HTML for you. Link
-            it once. No classes required for a clean, readable page.
+          <h2>Overview</h2>
+          <p class="docs-lead">
+            Ecco is one stylesheet that styles semantic HTML for you. No class
+            names required for a clean, readable page.
           </p>
-          <ul>
+          <ul class="docs-example-list">
             <li>Classless by default</li>
-            <li>Light &amp; dark via <code>prefers-color-scheme</code></li>
+            <li>Light and dark via <code>prefers-color-scheme</code></li>
             <li>Themeable with CSS variables</li>
-            <li>No JavaScript</li>
+            <li>No JavaScript required for the framework</li>
           </ul>
+          <p class="docs-tip">
+            <strong>How to read these docs.</strong> Live demos show the result.
+            Open the <strong>HTML</strong> tab (or a code panel) to copy the
+            markup. Use <strong>Copy</strong> on any sample.
+          </p>
         </section>
 
-        <hr />
-
-        <section id="quick-start">
-          <h2>Quick start</h2>
-          <p class="docs-tip">
-            <strong>Copy-ready samples.</strong> Each gray code panel below is a
-            snippet you can paste into your project. Use the
-            <strong>Copy</strong> button on the right of every panel.
+        <section id="install">
+          <h2>Install</h2>
+          <p class="docs-lead">
+            Pick one path. CDN is fastest. Download or npm if you want the file
+            in your project.
           </p>
 
-          <h3>Download the file</h3>
-          <p>
-            Prefer to host the CSS yourself? Grab a file and drop it into your
-            project:
-          </p>
-          <ul>
-            <li>
-              <a
-                href="https://github.com/arpalanca/eccocss/raw/main/dist/ecco.min.css"
-                download
-                >ecco.min.css</a
-              >
-              (minified, recommended)
-            </li>
-            <li>
-              <a
-                href="https://github.com/arpalanca/eccocss/raw/main/dist/ecco.css"
-                download
-                >ecco.css</a
-              >
-              (readable source)
-            </li>
-            <li>
-              <a
-                href="https://github.com/arpalanca/eccocss/archive/refs/heads/main.zip"
-                >Download ZIP</a
-              >
-              (full repository)
-            </li>
-          </ul>
-          <p>Then link it locally:</p>
-          <pre data-lang="HTML" data-title="Local stylesheet"><code>&lt;link rel="stylesheet" href="css/ecco.min.css" /&gt;</code></pre>
-          <p>
-            You can also copy
-            <code>dist/ecco.min.css</code> from a local clone of this repo.
-          </p>
+          <div class="docs-tabs" data-tabs>
+            <div class="docs-tabs-list" role="tablist" aria-label="Install methods">
+              <button type="button" role="tab" aria-selected="true" aria-controls="install-cdn" id="tab-install-cdn">
+                CDN
+              </button>
+              <button type="button" role="tab" aria-selected="false" aria-controls="install-download" id="tab-install-download">
+                Download
+              </button>
+              <button type="button" role="tab" aria-selected="false" aria-controls="install-npm" id="tab-install-npm">
+                npm
+              </button>
+            </div>
 
-          <h3>Use the CDN</h3>
-          <p>No download needed. Link Ecco from jsDelivr:</p>
-          <pre data-lang="HTML" data-title="CDN link"><code>&lt;link
+            <div class="docs-tab-panel" role="tabpanel" id="install-cdn" aria-labelledby="tab-install-cdn">
+              <p>Drop this into your <code>&lt;head&gt;</code>:</p>
+              <pre data-lang="HTML" data-title="CDN link"><code>&lt;link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/gh/arpalanca/eccocss@main/dist/ecco.min.css"
 /&gt;</code></pre>
-          <p>
-            For production, pin a tag or commit (replace
-            <code>@main</code> with <code>@v0.1.0</code> or a SHA).
+              <p>
+                For production, pin a tag or commit SHA instead of
+                <code>@main</code>.
+              </p>
+            </div>
+
+            <div class="docs-tab-panel" role="tabpanel" id="install-download" aria-labelledby="tab-install-download" hidden>
+              <p>Grab a file and host it yourself:</p>
+              <ul class="docs-example-list">
+                <li>
+                  <a href="https://github.com/arpalanca/eccocss/raw/main/dist/ecco.min.css" download>ecco.min.css</a>
+                  (minified)
+                </li>
+                <li>
+                  <a href="https://github.com/arpalanca/eccocss/raw/main/dist/ecco.css" download>ecco.css</a>
+                  (readable)
+                </li>
+                <li>
+                  <a href="https://github.com/arpalanca/eccocss/archive/refs/heads/main.zip">Download ZIP</a>
+                </li>
+              </ul>
+              <pre data-lang="HTML" data-title="Local stylesheet"><code>&lt;link rel="stylesheet" href="css/ecco.min.css" /&gt;</code></pre>
+            </div>
+
+            <div class="docs-tab-panel" role="tabpanel" id="install-npm" aria-labelledby="tab-install-npm" hidden>
+              <pre data-lang="Shell" data-title="Install"><code>npm install github:arpalanca/eccocss</code></pre>
+              <pre data-lang="HTML" data-title="Link from node_modules"><code>&lt;link rel="stylesheet" href="node_modules/eccocss/dist/ecco.min.css" /&gt;</code></pre>
+            </div>
+          </div>
+        </section>
+
+        <section id="usage">
+          <h2>Usage</h2>
+          <p class="docs-lead">
+            Write semantic HTML. Put page content in
+            <code>header</code>, <code>main</code>, <code>footer</code>, or
+            similar landmarks as direct children of <code>body</code>.
           </p>
-
-          <h3>Install with npm</h3>
-          <pre data-lang="Shell" data-title="Install"><code>npm install github:arpalanca/eccocss</code></pre>
-          <pre data-lang="HTML" data-title="Link from node_modules"><code>&lt;link rel="stylesheet" href="node_modules/eccocss/dist/ecco.min.css" /&gt;</code></pre>
-
-          <h3>Starter HTML</h3>
-          <p>Full page starter. Copy, save as <code>index.html</code>, and open it:</p>
           <pre data-lang="HTML" data-title="Starter page"><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
   &lt;head&gt;
@@ -146,200 +154,276 @@
 &lt;/html&gt;</code></pre>
         </section>
 
-        <hr />
-
         <section id="typography">
           <h2>Typography</h2>
-          <h3>Heading three</h3>
-          <h4>Heading four</h4>
-          <h5>Heading five</h5>
-          <h6>Heading six</h6>
-          <p>
-            Body text with <strong>strong</strong>, <em>emphasis</em>,
-            <mark>highlight</mark>, <a href="#">a link</a>,
-            <code>inline code</code>, <sub>sub</sub>, and <sup>sup</sup>. Press
-            <kbd>Ctrl</kbd> + <kbd>C</kbd>.
+          <p class="docs-lead">
+            Headings, paragraphs, links, lists, quotes, and inline code are
+            styled with no classes.
           </p>
-          <p>
-            <small>Small print for captions and asides.</small>
-          </p>
-          <blockquote>
-            <p>
-              Semantic HTML should look good before you reach for a class.
-            </p>
-            <footer>Ecco philosophy</footer>
-          </blockquote>
-          <ul>
-            <li>Unordered one</li>
-            <li>
-              Unordered two
-              <ul>
-                <li>Nested item</li>
-                <li>Another nested item</li>
-              </ul>
-            </li>
-            <li>Unordered three</li>
-          </ul>
-          <ol>
-            <li>Ordered one</li>
-            <li>Ordered two</li>
-            <li>Ordered three</li>
-          </ol>
-          <dl>
-            <dt>Classless</dt>
-            <dd>Elements are styled by tag, not by utility classes.</dd>
-            <dt>Themeable</dt>
-            <dd>Override CSS variables to match your brand.</dd>
-          </dl>
-          <pre data-lang="JavaScript" data-title="Code sample"><code>function hello(name) {
-  return `Hello, ${name}!`;
-}</code></pre>
+
+          <div class="docs-tabs" data-tabs>
+            <div class="docs-tabs-list" role="tablist" aria-label="Typography example">
+              <button type="button" role="tab" aria-selected="true" aria-controls="type-preview" id="tab-type-preview">Preview</button>
+              <button type="button" role="tab" aria-selected="false" aria-controls="type-html" id="tab-type-html">HTML</button>
+            </div>
+            <div class="docs-tab-panel" role="tabpanel" id="type-preview" aria-labelledby="tab-type-preview">
+              <div class="docs-demo">
+                <p class="docs-kicker">Headings</p>
+                <h3>Heading three</h3>
+                <h4>Heading four</h4>
+                <h5>Heading five</h5>
+                <h6>Heading six</h6>
+                <p class="docs-kicker">Inline</p>
+                <p>
+                  Body text with <strong>strong</strong>, <em>emphasis</em>,
+                  <mark>highlight</mark>, <a href="#">a link</a>,
+                  <code>inline code</code>, and <kbd>Ctrl</kbd> + <kbd>C</kbd>.
+                </p>
+                <p class="docs-kicker">Quote</p>
+                <blockquote>
+                  <p>Semantic HTML should look good before you reach for a class.</p>
+                </blockquote>
+                <p class="docs-kicker">Lists</p>
+                <ul>
+                  <li>Unordered item</li>
+                  <li>Nested
+                    <ul>
+                      <li>Child item</li>
+                    </ul>
+                  </li>
+                </ul>
+                <ol>
+                  <li>Ordered one</li>
+                  <li>Ordered two</li>
+                </ol>
+              </div>
+            </div>
+            <div class="docs-tab-panel" role="tabpanel" id="type-html" aria-labelledby="tab-type-html" hidden>
+              <pre data-lang="HTML" data-title="Typography"><code>&lt;h3&gt;Heading three&lt;/h3&gt;
+&lt;p&gt;Body text with &lt;strong&gt;strong&lt;/strong&gt; and &lt;a href="#"&gt;a link&lt;/a&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Semantic HTML should look good before you reach for a class.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+  &lt;li&gt;Unordered item&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+            </div>
+          </div>
         </section>
 
-        <hr />
+        <section id="buttons">
+          <h2>Buttons</h2>
+          <p class="docs-lead">
+            Native <code>button</code> elements, submit/reset inputs, and
+            <code>a[role="button"]</code> share the same look.
+          </p>
+
+          <div class="docs-tabs" data-tabs>
+            <div class="docs-tabs-list" role="tablist" aria-label="Buttons example">
+              <button type="button" role="tab" aria-selected="true" aria-controls="btn-preview" id="tab-btn-preview">Preview</button>
+              <button type="button" role="tab" aria-selected="false" aria-controls="btn-html" id="tab-btn-html">HTML</button>
+            </div>
+            <div class="docs-tab-panel" role="tabpanel" id="btn-preview" aria-labelledby="tab-btn-preview">
+              <div class="docs-demo">
+                <button type="button">Primary</button>
+                <button type="reset">Reset</button>
+                <a href="#" role="button">Link button</a>
+              </div>
+            </div>
+            <div class="docs-tab-panel" role="tabpanel" id="btn-html" aria-labelledby="tab-btn-html" hidden>
+              <pre data-lang="HTML" data-title="Buttons"><code>&lt;button type="button"&gt;Primary&lt;/button&gt;
+&lt;button type="reset"&gt;Reset&lt;/button&gt;
+&lt;a href="#" role="button"&gt;Link button&lt;/a&gt;</code></pre>
+            </div>
+          </div>
+        </section>
 
         <section id="forms">
           <h2>Forms</h2>
-          <form>
-            <fieldset>
-              <legend>Profile</legend>
-              <label for="name">Name</label>
-              <input
-                id="name"
-                name="name"
-                type="text"
-                placeholder="Ada Lovelace"
-                autocomplete="name"
-              />
+          <p class="docs-lead">
+            Labels, inputs, selects, textareas, checkboxes, and radios are
+            styled automatically. Keep forms short; stack fields vertically.
+          </p>
 
-              <label for="email">Email</label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                placeholder="ada@example.com"
-                autocomplete="email"
-              />
-
-              <label for="password">Password</label>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                placeholder="••••••••"
-                autocomplete="new-password"
-              />
-
-              <label for="role">Role</label>
-              <select id="role" name="role">
-                <optgroup label="Creative">
-                  <option>Designer</option>
-                  <option>Writer</option>
-                </optgroup>
-                <optgroup label="Technical">
-                  <option>Engineer</option>
-                  <option>Researcher</option>
-                </optgroup>
-              </select>
-
-              <label for="about">About</label>
-              <textarea
-                id="about"
-                name="about"
-                placeholder="A short bio…"
-              ></textarea>
-
-              <label>
-                <input type="checkbox" name="newsletter" checked />
-                Subscribe to updates
-              </label>
-
-              <label>
-                <input type="radio" name="plan" value="free" checked />
-                Free
-              </label>
-              <label>
-                <input type="radio" name="plan" value="pro" />
-                Pro
-              </label>
-
-              <label for="volume">Volume</label>
-              <input
-                id="volume"
-                name="volume"
-                type="range"
-                min="0"
-                max="100"
-                value="60"
-              />
-
-              <button type="submit">Save</button>
-              <button type="reset">Reset</button>
-              <a href="#" role="button">Link button</a>
-            </fieldset>
-          </form>
+          <div class="docs-tabs" data-tabs>
+            <div class="docs-tabs-list" role="tablist" aria-label="Forms example">
+              <button type="button" role="tab" aria-selected="true" aria-controls="form-preview" id="tab-form-preview">Preview</button>
+              <button type="button" role="tab" aria-selected="false" aria-controls="form-html" id="tab-form-html">HTML</button>
+            </div>
+            <div class="docs-tab-panel" role="tabpanel" id="form-preview" aria-labelledby="tab-form-preview">
+              <form class="docs-demo" onsubmit="return false">
+                <fieldset>
+                  <legend>Contact</legend>
+                  <div class="docs-demo-row">
+                    <div>
+                      <label for="name">Name</label>
+                      <input id="name" name="name" type="text" placeholder="Ada Lovelace" autocomplete="name" />
+                    </div>
+                    <div>
+                      <label for="email">Email</label>
+                      <input id="email" name="email" type="email" placeholder="ada@example.com" autocomplete="email" />
+                    </div>
+                  </div>
+                  <label for="role">Role</label>
+                  <select id="role" name="role">
+                    <option>Designer</option>
+                    <option>Engineer</option>
+                    <option>Writer</option>
+                  </select>
+                  <label for="about">Message</label>
+                  <textarea id="about" name="about" placeholder="Short note…"></textarea>
+                  <div class="docs-demo-choices">
+                    <label>
+                      <input type="checkbox" name="newsletter" checked />
+                      Email me updates
+                    </label>
+                    <label>
+                      <input type="radio" name="plan" value="free" checked />
+                      Free plan
+                    </label>
+                    <label>
+                      <input type="radio" name="plan" value="pro" />
+                      Pro plan
+                    </label>
+                  </div>
+                  <button type="submit">Send</button>
+                  <button type="reset">Reset</button>
+                </fieldset>
+              </form>
+            </div>
+            <div class="docs-tab-panel" role="tabpanel" id="form-html" aria-labelledby="tab-form-html" hidden>
+              <pre data-lang="HTML" data-title="Form"><code>&lt;form&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;Contact&lt;/legend&gt;
+    &lt;label for="name"&gt;Name&lt;/label&gt;
+    &lt;input id="name" name="name" type="text" /&gt;
+    &lt;label for="email"&gt;Email&lt;/label&gt;
+    &lt;input id="email" name="email" type="email" /&gt;
+    &lt;label for="about"&gt;Message&lt;/label&gt;
+    &lt;textarea id="about" name="about"&gt;&lt;/textarea&gt;
+    &lt;button type="submit"&gt;Send&lt;/button&gt;
+  &lt;/fieldset&gt;
+&lt;/form&gt;</code></pre>
+            </div>
+          </div>
         </section>
-
-        <hr />
 
         <section id="tables">
           <h2>Tables</h2>
-          <table>
-            <caption>
-              Sample data
-            </caption>
-            <thead>
-              <tr>
-                <th>Package</th>
-                <th>Size</th>
-                <th>License</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>ecco.min.css</td>
-                <td>minified</td>
-                <td>MIT</td>
-              </tr>
-              <tr>
-                <td>ecco.css</td>
-                <td>source</td>
-                <td>MIT</td>
-              </tr>
-            </tbody>
-          </table>
+          <p class="docs-lead">
+            Tables get readable spacing, header contrast, and row hover. On
+            small screens they scroll horizontally when needed.
+          </p>
+
+          <div class="docs-tabs" data-tabs>
+            <div class="docs-tabs-list" role="tablist" aria-label="Tables example">
+              <button type="button" role="tab" aria-selected="true" aria-controls="table-preview" id="tab-table-preview">Preview</button>
+              <button type="button" role="tab" aria-selected="false" aria-controls="table-html" id="tab-table-html">HTML</button>
+            </div>
+            <div class="docs-tab-panel" role="tabpanel" id="table-preview" aria-labelledby="tab-table-preview">
+              <div class="docs-demo">
+                <table>
+                  <caption>Package files</caption>
+                  <thead>
+                    <tr>
+                      <th>File</th>
+                      <th>Use</th>
+                      <th>License</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>ecco.min.css</td>
+                      <td>Production</td>
+                      <td>MIT</td>
+                    </tr>
+                    <tr>
+                      <td>ecco.css</td>
+                      <td>Readable source</td>
+                      <td>MIT</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="docs-tab-panel" role="tabpanel" id="table-html" aria-labelledby="tab-table-html" hidden>
+              <pre data-lang="HTML" data-title="Table"><code>&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;File&lt;/th&gt;
+      &lt;th&gt;Use&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;ecco.min.css&lt;/td&gt;
+      &lt;td&gt;Production&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+            </div>
+          </div>
         </section>
 
-        <hr />
+        <section id="components">
+          <h2>Components</h2>
+          <p class="docs-lead">
+            A few extras that still stay classless:
+            <code>details</code>, <code>progress</code>, and
+            <code>kbd</code>.
+          </p>
 
-        <section id="misc">
-          <h2>Misc</h2>
-          <details>
-            <summary>How do I theme Ecco?</summary>
-            <p>
-              Override variables on <code>:root</code>. For example,
-              <code>--ecco-primary</code>, <code>--ecco-bg</code>, and
-              <code>--ecco-width</code>. See the
-              <a href="https://github.com/arpalanca/eccocss#customization"
-                >README customization section</a
-              >.
-            </p>
-          </details>
+          <div class="docs-tabs" data-tabs>
+            <div class="docs-tabs-list" role="tablist" aria-label="Components example">
+              <button type="button" role="tab" aria-selected="true" aria-controls="comp-preview" id="tab-comp-preview">Preview</button>
+              <button type="button" role="tab" aria-selected="false" aria-controls="comp-html" id="tab-comp-html">HTML</button>
+            </div>
+            <div class="docs-tab-panel" role="tabpanel" id="comp-preview" aria-labelledby="tab-comp-preview">
+              <div class="docs-demo">
+                <details>
+                  <summary>What is classless CSS?</summary>
+                  <p>
+                    Elements are styled by tag. You write normal HTML and get
+                    defaults without utility classes.
+                  </p>
+                </details>
+                <label for="progress">Progress</label>
+                <progress id="progress" max="100" value="64">64%</progress>
+                <p>Keyboard shortcut: <kbd>Ctrl</kbd> + <kbd>K</kbd></p>
+              </div>
+            </div>
+            <div class="docs-tab-panel" role="tabpanel" id="comp-html" aria-labelledby="tab-comp-html" hidden>
+              <pre data-lang="HTML" data-title="Components"><code>&lt;details&gt;
+  &lt;summary&gt;What is classless CSS?&lt;/summary&gt;
+  &lt;p&gt;Elements are styled by tag.&lt;/p&gt;
+&lt;/details&gt;
+&lt;progress max="100" value="64"&gt;64%&lt;/progress&gt;
+&lt;p&gt;Press &lt;kbd&gt;Ctrl&lt;/kbd&gt; + &lt;kbd&gt;K&lt;/kbd&gt;&lt;/p&gt;</code></pre>
+            </div>
+          </div>
+        </section>
 
-          <label for="progress">Progress</label>
-          <progress id="progress" max="100" value="64">64%</progress>
-
-          <figure>
-            <pre data-lang="CSS" data-title="Theme overrides"><code>:root {
+        <section id="theming">
+          <h2>Theming</h2>
+          <p class="docs-lead">
+            Override CSS variables on <code>:root</code>. Light and dark follow
+            the system preference automatically.
+          </p>
+          <pre data-lang="CSS" data-title="Theme overrides"><code>:root {
   --ecco-hue: 160;
+  --ecco-primary: hsl(160 55% 35%);
   --ecco-width: 52rem;
+  --ecco-font-family: "IBM Plex Sans", system-ui, sans-serif;
 }</code></pre>
-            <figcaption>Paste into your own stylesheet after linking Ecco.</figcaption>
-          </figure>
-
           <p>
-            Light and dark follow <code>prefers-color-scheme</code>
-            automatically. Switch your OS theme to preview.
+            Common tokens:
+            <code>--ecco-bg</code>,
+            <code>--ecco-text</code>,
+            <code>--ecco-primary</code>,
+            <code>--ecco-border</code>,
+            <code>--ecco-width</code>.
+            Full list in
+            <a href="https://github.com/arpalanca/eccocss/blob/main/css/ecco.css">css/ecco.css</a>.
           </p>
         </section>
       </main>
@@ -349,7 +433,7 @@
           Ecco CSS · MIT ·
           <a href="https://github.com/arpalanca/eccocss">GitHub</a>
           ·
-          <a href="#quick-start">Download</a>
+          <a href="#install">Install</a>
         </p>
       </footer>
     </div>
@@ -358,7 +442,7 @@
       (() => {
         const guessLang = (text) => {
           const t = text.trim();
-          if (/^<!DOCTYPE|^<html|^<link\b|^<[a-z]/i.test(t)) return "HTML";
+          if (/^<!DOCTYPE|^<html|^<link\b|^<form\b|^<[a-z]/i.test(t)) return "HTML";
           if (/^(npm|yarn|pnpm|npx)\b/.test(t)) return "Shell";
           if (/^:root\b|^--[a-z]|\{[\s\S]*\}/.test(t) && !/\bfunction\b/.test(t))
             return "CSS";
@@ -419,7 +503,29 @@
           });
         };
 
+        const enhanceTabs = () => {
+          document.querySelectorAll("[data-tabs]").forEach((tabs) => {
+            const list = tabs.querySelector('[role="tablist"]');
+            if (!list) return;
+            const tabButtons = [...list.querySelectorAll('[role="tab"]')];
+
+            const activate = (tab) => {
+              tabButtons.forEach((btn) => {
+                const selected = btn === tab;
+                btn.setAttribute("aria-selected", selected ? "true" : "false");
+                const panel = document.getElementById(btn.getAttribute("aria-controls"));
+                if (panel) panel.hidden = !selected;
+              });
+            };
+
+            tabButtons.forEach((btn) => {
+              btn.addEventListener("click", () => activate(btn));
+            });
+          });
+        };
+
         enhanceCodeBlocks();
+        enhanceTabs();
 
         const links = [
           ...document.querySelectorAll('.docs-sidebar nav a[href^="#"]'),

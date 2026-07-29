@@ -12,7 +12,6 @@ body {
   margin: 0;
 }
 
-/* Undo Ecco's centered single-column width for docs shell */
 body > .docs-sidebar,
 body > .docs-content,
 body > .docs-content > header,
@@ -112,7 +111,7 @@ body > .docs-content > footer {
 .docs-content > header,
 .docs-content > main,
 .docs-content > footer {
-  width: min(100%, var(--ecco-width));
+  width: min(100%, 44rem);
   margin-inline: 0;
 }
 
@@ -133,7 +132,7 @@ body > .docs-content > footer {
 }
 
 .docs-content > main {
-  padding-block: 1.5rem;
+  padding-block: 1.25rem;
 }
 
 .docs-content > footer {
@@ -145,15 +144,26 @@ body > .docs-content > footer {
 
 .docs-content section {
   scroll-margin-top: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.docs-content section > h2 {
+  margin-top: 0;
+  margin-bottom: 0.4em;
+}
+
+.docs-lead {
+  margin: 0 0 1.15rem;
+  color: var(--ecco-muted);
 }
 
 .docs-content hr {
-  margin-block: 2rem;
+  display: none;
 }
 
 .docs-tip {
-  margin: 0 0 1.25rem;
-  padding: 0.75rem 1rem;
+  margin: 0 0 1.15rem;
+  padding: 0.7rem 0.95rem;
   border: 1px solid var(--ecco-border);
   border-inline-start: 0.25rem solid var(--ecco-primary);
   border-radius: var(--ecco-border-radius);
@@ -164,6 +174,169 @@ body > .docs-content > footer {
 
 .docs-tip strong {
   color: var(--ecco-text);
+}
+
+/* Tabs */
+.docs-tabs {
+  margin: 0 0 1.15rem;
+  border: 1px solid var(--ecco-border);
+  border-radius: calc(var(--ecco-border-radius) * 1.15);
+  background: var(--ecco-surface);
+  overflow: hidden;
+}
+
+.docs-tabs-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem;
+  padding: 0.4rem;
+  border-bottom: 1px solid var(--ecco-border);
+  background: var(--ecco-bg-subtle);
+}
+
+.docs-tabs-list [role="tab"] {
+  margin: 0 !important;
+  padding: 0.4em 0.85em !important;
+  width: auto !important;
+  display: inline-flex !important;
+  font-size: 0.86rem !important;
+  font-weight: 600;
+  color: var(--ecco-muted) !important;
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  border-radius: calc(var(--ecco-border-radius) * 0.85) !important;
+  box-shadow: none !important;
+  cursor: pointer;
+}
+
+.docs-tabs-list [role="tab"]:hover {
+  color: var(--ecco-text) !important;
+  background: var(--ecco-surface) !important;
+}
+
+.docs-tabs-list [role="tab"][aria-selected="true"] {
+  color: var(--ecco-text) !important;
+  background: var(--ecco-surface) !important;
+  border-color: var(--ecco-border) !important;
+}
+
+.docs-tabs-list [role="tab"]:focus-visible {
+  outline: none;
+  box-shadow: var(--ecco-focus) !important;
+}
+
+.docs-tab-panel {
+  padding: 0.95rem 1rem 1.05rem;
+}
+
+.docs-tab-panel[hidden] {
+  display: none !important;
+}
+
+.docs-tab-panel > :last-child {
+  margin-bottom: 0;
+}
+
+.docs-tab-panel .docs-code {
+  margin-bottom: 0;
+}
+
+/* Compact live demos */
+.docs-demo {
+  margin: 0;
+}
+
+.docs-demo > :last-child {
+  margin-bottom: 0;
+}
+
+.docs-demo fieldset {
+  margin: 0;
+  padding: 0.85rem 0.95rem;
+}
+
+.docs-demo legend {
+  font-size: 0.92rem;
+}
+
+.docs-demo label {
+  margin-bottom: 0.25em;
+  font-size: 0.92rem;
+}
+
+.docs-demo label:has(+ :is(input, select, textarea)) {
+  margin-top: 0.55em;
+}
+
+.docs-demo
+  input:not(
+    [type="checkbox"],
+    [type="radio"],
+    [type="range"],
+    [type="file"],
+    [type="color"],
+    [type="submit"],
+    [type="button"],
+    [type="reset"],
+    [type="image"]
+  ),
+.docs-demo select,
+.docs-demo textarea {
+  margin-bottom: 0.55rem;
+  padding: 0.4em 0.65em;
+}
+
+.docs-demo textarea {
+  min-height: 4.25rem;
+}
+
+.docs-demo button,
+.docs-demo input[type="submit"],
+.docs-demo input[type="button"],
+.docs-demo input[type="reset"],
+.docs-demo a[role="button"] {
+  margin: 0.35rem 0.4rem 0 0 !important;
+  padding: 0.4em 0.85em !important;
+  width: auto !important;
+  display: inline-block !important;
+}
+
+.docs-demo-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 0.85rem;
+}
+
+.docs-demo-row > * {
+  min-width: 0;
+}
+
+.docs-demo-choices {
+  display: grid;
+  gap: 0.15rem;
+  margin: 0.35rem 0 0.65rem;
+}
+
+.docs-demo-choices label {
+  margin: 0 !important;
+}
+
+.docs-example-list {
+  margin: 0 0 1rem;
+  padding-inline-start: 1.2rem;
+}
+
+.docs-example-list li {
+  margin-block: 0.2em;
+}
+
+.docs-kicker {
+  margin: 0 0 0.35rem;
+  color: var(--ecco-muted);
+  font-size: 0.8rem;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 /* Copyable sample code panels */
@@ -310,5 +483,9 @@ body > .docs-content > footer {
 
   .docs-content {
     padding: 1rem 1rem 2.5rem;
+  }
+
+  .docs-demo-row {
+    grid-template-columns: 1fr;
   }
 }
