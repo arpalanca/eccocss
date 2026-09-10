@@ -170,7 +170,7 @@ Outputs:
 - `dist/ecco.min.css` (minified)
 - copies into `docs/` for GitHub Pages
 
-## Philosophy
+## Philosophy 
 
 1. **Drop-in first:** one `<link>`, zero config, zero JavaScript.
 2. **Semantic by default:** style the HTML you already write.
